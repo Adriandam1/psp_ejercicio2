@@ -1,0 +1,1 @@
+Crea un programa en Java que usando línea de comandos permita al usuario editar un archivo existente o crearlo utilizando un editor de texto sencillo (gnome-text-editor, gedit, notepad...). El usuario introducirá la ruta o el nombre del nuevo archivo y la extensión.
