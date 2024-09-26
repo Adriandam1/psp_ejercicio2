@@ -12,25 +12,35 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-    try {
+        try {
 
 
-        Scanner sc = new Scanner(System.in);
+            Scanner sc = new Scanner(System.in);
 
-        System.out.println("Nombre del archivo de texto plano: ");
-        String archivo = sc.nextLine();
-        //ruta absoluta: home/dam/IdeaProjects/psp_ejercicio2
-        //ruta escritorio: home/dam/Desktop/
+            System.out.println("Nombre del archivo en texto plano(sin la extensión): ");
+            String archivo = sc.nextLine();
+            // Variable para extensión archivo
+            String extension = ".txt";
+            //ruta absoluta: home/dam/IdeaProjects/psp_ejercicio2
+            //ruta escritorio: home/dam/Desktop/
 
-        ProcessBuilder pBlock = new ProcessBuilder("kwrite", "" +archivo+".txt");
-        pBlock.start();
+            //windows: "notepad.exe"
+            //debian clase: "kwrite"
+            ProcessBuilder pBlock = new ProcessBuilder("notepad.exe", archivo + extension);
 
-        //Process p = pBlock.start();
-        //System.out.println(p);
+            //Inicia el proceso
+            System.out.println("Iniciando proceso...");
+            Process p = pBlock.start();
+            //Espera a que el proceso termine
+            p.waitFor();
 
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
+            System.out.println("El editor de texto se ha cerrado. Puedes revisar el archivo en: " + archivo + extension);
 
+        } catch (IOException e) {
+            System.err.println("Error al intentar abrir el editor de texto: " + e.getMessage());
+            //Excepcion interrpción
+        } catch (InterruptedException e) {
+            System.err.println("El proceso fue interrumpido: " + e.getMessage());
+        }
     }
 }
