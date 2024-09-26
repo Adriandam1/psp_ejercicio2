@@ -26,7 +26,7 @@ public class Main {
 
             //windows: "notepad.exe"
             //debian clase: "kwrite"
-            ProcessBuilder pBlock = new ProcessBuilder("notepad.exe", archivo + extension);
+            ProcessBuilder pBlock = new ProcessBuilder("kwrite", archivo + extension);
 
             //Inicia el proceso
             System.out.println("Iniciando proceso...");
